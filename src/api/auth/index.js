@@ -1,11 +1,9 @@
 const Router = require('koa-router');
 const { register, login, check, logout } = require('./auth.ctrl');
+const authMiddleware = require('../../middleware/authMiddleware');
 
 const auth = new Router();
 
-auth.post('/register', register);
-auth.post('/login', login);
-auth.get('/check', check);
-auth.post('/logout', logout);
+auth.get('/check', authMiddleware, check);
 
 module.exports = auth;

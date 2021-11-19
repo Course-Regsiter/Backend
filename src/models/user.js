@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const jwt = require('../modules/jwt');
 
 const UserSchema = new Schema({
   id: String,
@@ -22,17 +22,11 @@ UserSchema.methods.serialize = function () {
   delete data.password;
   return data;
 };
-UserSchema.methods.generateToken = function () {
-  const token = jwt.sign(
-    {
-      _id: this._id,
-      userid: this.id,
-    },
-    process.env.JWT_SECRET,
-    {
-      expiresIn: '7d',
-    },
-  );
+UserSchema.methods.generateToken = async function () {
+  const token = await jwt.sign({
+    _id: this._id,
+    userid: this.id,
+  });
   return token;
 };
 
