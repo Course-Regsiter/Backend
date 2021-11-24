@@ -68,4 +68,4 @@ exports.login = async (ctx) => {
 exports.logout = (ctx) => {
     ctx.cookies.set('access_token');
     ctx.status = 204;
-};
+}
