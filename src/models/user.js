@@ -3,25 +3,9 @@ const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
 const jwt = require('../modules/jwt');
 
-const CourseSchema = new Schema({
-  no: String,
-  name: String,
-  prof: String,
-  room: String,
-});
-
-const CourseSchema = new Schema({
-  no: String,
-  name: String,
-  prof: String,
-  room: String,
-});
-
 const UserSchema = new Schema({
   id: String,
-  password: String,
-  reserved: [CourseSchema],
-  confirmed: [CourseSchema],
+  password: String
 });
 
 // 인스턴스 메서드
