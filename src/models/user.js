@@ -10,6 +10,13 @@ const CourseSchema = new Schema({
   room: String,
 });
 
+const CourseSchema = new Schema({
+  no: String,
+  name: String,
+  prof: String,
+  room: String,
+});
+
 const UserSchema = new Schema({
   id: String,
   password: String,
